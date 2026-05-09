@@ -1,0 +1,120 @@
+{
+  "name": "REST API Testing Framework",
+  "description": "Default endpoint configuration for API validation",
+  "version": "1.0.0",
+  "author": "Sandrine Uwineza",
+  "base_url": "https://httpbin.org",
+  "default_timeout": 10,
+  "default_headers": {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "User-Agent": "RestAPITestingFramework/1.0 (github.com/sandrineuwineza)"
+  },
+  "endpoints": [
+    {
+      "id": "get_basic",
+      "name": "GET Basic Request",
+      "description": "Validates a basic GET request returns 200 OK",
+      "method": "GET",
+      "path": "/get",
+      "expected_status": 200,
+      "expected_schema": {
+        "args": "object",
+        "headers": "object",
+        "url": "string"
+      },
+      "latency_threshold_ms": 2000,
+      "tags": ["smoke", "get"]
+    },
+    {
+      "id": "post_json",
+      "name": "POST JSON Payload",
+      "description": "Validates a POST request with JSON body",
+      "method": "POST",
+      "path": "/post",
+      "body": {
+        "name": "Sandrine",
+        "role": "Technical Support Engineer",
+        "certified": true
+      },
+      "expected_status": 200,
+      "expected_schema": {
+        "json": "object",
+        "url": "string"
+      },
+      "expected_fields": ["json", "headers", "url"],
+      "latency_threshold_ms": 2000,
+      "tags": ["smoke", "post"]
+    },
+    {
+      "id": "status_404",
+      "name": "404 Not Found",
+      "description": "Validates that a missing resource returns 404",
+      "method": "GET",
+      "path": "/status/404",
+      "expected_status": 404,
+      "latency_threshold_ms": 2000,
+      "tags": ["status"]
+    },
+    {
+      "id": "status_500",
+      "name": "500 Server Error",
+      "description": "Validates server error handling returns 500",
+      "method": "GET",
+      "path": "/status/500",
+      "expected_status": 500,
+      "latency_threshold_ms": 2000,
+      "tags": ["status", "error"]
+    },
+    {
+      "id": "auth_bearer",
+      "name": "Bearer Token Auth",
+      "description": "Validates bearer token authentication flow",
+      "method": "GET",
+      "path": "/bearer",
+      "headers": {
+        "Authorization": "Bearer test-token-sandrine-2026"
+      },
+      "expected_status": 200,
+      "expected_fields": ["authenticated", "token"],
+      "latency_threshold_ms": 2000,
+      "tags": ["auth"]
+    },
+    {
+      "id": "delay_test",
+      "name": "Latency Threshold Test",
+      "description": "Validates response latency stays within threshold",
+      "method": "GET",
+      "path": "/delay/1",
+      "expected_status": 200,
+      "latency_threshold_ms": 3000,
+      "tags": ["performance", "latency"]
+    },
+    {
+      "id": "headers_check",
+      "name": "Response Headers Check",
+      "description": "Validates specific response headers are present",
+      "method": "GET",
+      "path": "/response-headers?Content-Type=application/json",
+      "expected_status": 200,
+      "expected_headers": {
+        "Content-Type": "application/json"
+      },
+      "latency_threshold_ms": 2000,
+      "tags": ["headers"]
+    },
+    {
+      "id": "json_validation",
+      "name": "JSON Schema Validation",
+      "description": "Validates complex JSON response structure",
+      "method": "GET",
+      "path": "/json",
+      "expected_status": 200,
+      "expected_schema": {
+        "slideshow": "object"
+      },
+      "latency_threshold_ms": 2000,
+      "tags": ["schema", "json"]
+    }
+  ]
+}
