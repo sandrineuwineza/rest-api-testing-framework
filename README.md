@@ -3,6 +3,7 @@
 > A professional Python-based REST API testing framework with a modern web dashboard — status code validation, JSON schema checking, payload integrity, latency benchmarking, and automated Postman collection export.
 [![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-Try_It_Now-success?style=for-the-badge&logoColor=white)](https://rest-api-testing-framework.onrender.com) [![Status](https://img.shields.io/website?url=https%3A%2F%2Frest-api-testing-framework.onrender.com&label=Status&style=for-the-badge)](https://rest-api-testing-framework.onrender.com)
 
+[![Tests](https://github.com/sandrineuwineza/rest-api-testing-framework/actions/workflows/tests.yml/badge.svg)](https://github.com/sandrineuwineza/rest-api-testing-framework/actions/workflows/tests.yml)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python&logoColor=white)](https://python.org)
 [![Flask](https://img.shields.io/badge/Flask-3.0-black?logo=flask)](https://flask.palletsprojects.com)
 [![Postman](https://img.shields.io/badge/Postman-Export-ff6c37?logo=postman&logoColor=white)](https://postman.com)
@@ -217,7 +218,7 @@ python -m pytest tests/ -v -k TestLatencyValidator
 API Testing:      Status codes · Schema validation · Payload integrity
                   Latency benchmarking · Response header checks
 Python:           Modular architecture · dataclasses · urllib
-                  Concurrent test execution · pytest
+                  Tag-filtered suite runner · pytest
 Postman:          Collection v2.1 generation · Test scripts
                   Environment variables · Folder structure
 Flask:            REST API design · Route handlers · JSON responses
